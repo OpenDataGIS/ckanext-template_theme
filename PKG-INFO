@@ -1,14 +1,14 @@
 Metadata-Version: 2.1
-Name: ckanext-iepnb
+Name: ckanext-iepnb_theme
 Version: 0.0.1
 Summary: Plantillas iepnb
-Home-page: https://github.com/TRAGSATEC/ckanext-iepnb
+Home-page: https://github.com/OpenDataGIS/ckanext-iepnb_theme
 Author: Daniel Sanjurjo
 Author-email: dsanjurj@tragsa.es
 License: AGPL
-Description: [![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Tests/badge.svg?branch=main)](https://github.com/TRAGSATEC/ckanext-iepnb/actions)
+Description: [![Tests](https://github.com/OpenDataGIS/ckanext-iepnb_theme/workflows/Tests/badge.svg?branch=main)](https://github.com/OpenDataGIS/ckanext-iepnb_theme/actions)
         
-        # ckanext-iepnb
+        # ckanext-iepnb_theme
         
         **TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
         
@@ -43,7 +43,7 @@ Description: [![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Test
            For example installing any non-Python dependencies or adding any required
            config settings.
         
-        To install ckanext-iepnb:
+        To install ckanext-iepnb_theme:
         
         1. Activate your CKAN virtual environment, for example:
         
@@ -51,8 +51,8 @@ Description: [![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Test
         
         2. Clone the source and install it on the virtualenv
         
-            git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
-            cd ckanext-iepnb
+            git clone https://github.com/OpenDataGIS/ckanext-iepnb_theme.git
+            cd ckanext-iepnb_theme
             pip install -e .
         	pip install -r requirements.txt
         
@@ -78,11 +78,11 @@ Description: [![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Test
         
         ## Developer installation
         
-        To install ckanext-iepnb for development, activate your CKAN virtualenv and
+        To install ckanext-iepnb_theme for development, activate your CKAN virtualenv and
         do:
         
-            git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
-            cd ckanext-iepnb
+            git clone https://github.com/OpenDataGIS/ckanext-iepnb_theme.git
+            cd ckanext-iepnb_theme
             python setup.py develop
             pip install -r dev-requirements.txt
         
@@ -94,9 +94,9 @@ Description: [![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Test
             pytest --ckan-ini=test.ini
         
         
-        ## Releasing a new version of ckanext-iepnb
+        ## Releasing a new version of ckanext-iepnb_theme
         
-        If ckanext-iepnb should be available on PyPI you can follow these steps to publish a new version:
+        If ckanext-iepnb_theme should be available on PyPI you can follow these steps to publish a new version:
         
         1. Update the version number in the `setup.py` file. See [PEP 440](http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers) for how to choose version numbers.
         
