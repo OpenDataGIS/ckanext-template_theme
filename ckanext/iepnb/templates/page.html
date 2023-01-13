@@ -1,0 +1,182 @@
+{% ckan_extends %}
+
+{# El bloque page es todo lo que va dentro del body #}
+{% block page %}
+<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+{# inicio emulación page/page.html.twig #}
+<div class="page">
+  {%- block header %}<!-- Bloque header @ page -->
+    {% include "header.html" %}
+    <!-- Fin bloque header @ page -->
+  {% endblock -%}
+	<div class="content">
+		<div class="container py-4">
+  {# inicio emulación region/region.html.twig #}
+    {# inicio emulación core/modules/system/templates/block--system-messages-block.html.twig' #}
+			<div data-drupal-messages-fallback class="hidden"></div>
+    {# fin emulación core/modules/system/templates/block--system-messages-block.html.twig #}
+          {% block toolbar %}
+            <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+              {% block breadcrumb %}
+                <div class="layout layout--onecol">
+                  <div  class="layout__region layout__region--content">
+ <!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--system-breadcrumb-block.html.twig
+   * block--system.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/custom/iepnb/templates/block/block.html.twig' -->
+	                <div class="block block-system block-system-breadcrumb-block">
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'breadcrumb' -->
+<!-- BEGIN OUTPUT from 'themes/custom/iepnb/templates/navigation/breadcrumb.html.twig' -->
+                      <nav aria-label="breadcrumb" class="">
+                        <ol class="breadcrumb">
+                          {% snippet 'snippets/home_breadcrumb_item.html' %}
+                          {% block breadcrumb_content %}{% endblock %}
+                        </ol>
+                      </nav>
+
+<!-- END OUTPUT from 'themes/custom/iepnb/templates/navigation/breadcrumb.html.twig' -->
+		            </div>
+<!-- END OUTPUT from 'themes/custom/iepnb/templates/block/block.html.twig' -->
+                  </div>
+                </div>
+             {% endblock %}
+           </div>
+          {% endblock %}
+    {# inicio emulación block/block--system-main-block.html.twig #}
+			<div class="block block--iepnb-content block-system block-system-main-block">
+       {# Me salto el bloque node content/node.html.twig #}
+	{% block content %}
+<!-- Bloques content @ page -->
+
+       <!-- Bloque super.content @ page -->
+    {% block maintag %}<div class="main">{% endblock %}
+      <div id="content" class="container">
+        {% block main_content %}
+          {% block flash %}
+            <div class="flash-messages">
+              {% block flash_inner %}
+                {% for message in h.flash.pop_messages() | list %}
+                  <div class="alert fade in {{ message.category }}">
+                    {{ h.literal(message) }}
+                  </div>
+                {% endfor %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+
+
+
+          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' or c.action=='resource_read' %} no-nav{% endif %}">
+            {#
+            The pre_primary block can be used to add content to before the
+            rendering of the main content columns of the page.
+            #}
+            {% block pre_primary %}
+            {% endblock %}
+
+            {% block secondary %}
+              <aside class="secondary col-sm-3">
+                {#
+                The secondary_content block can be used to add content to the
+                sidebar of the page. This is the main block that is likely to be
+                used within a template.
+
+                Example:
+
+                  {% block secondary_content %}
+                    <h2>A sidebar item</h2>
+                    <p>Some content for the item</p>
+                  {% endblock %}
+                #}
+                {% block secondary_content %}{% endblock %}
+              </aside>
+            {% endblock %}
+
+            {% block primary %}
+              <div class="primary col-sm-9 col-xs-12" role="main">
+                {#
+                The primary_content block can be used to add content to the page.
+                This is the main block that is likely to be used within a template.
+
+                Example:
+
+                  {% block primary_content %}
+                    <h1>My page content</h1>
+                    <p>Some content for the page</p>
+                  {% endblock %}
+                #}
+                {% block primary_content %}
+                  <article class="module">
+                    {% block page_header %}
+                      <header class="module-content page-header">
+                        {% if self.content_action() | trim %}
+                          <div class="content_action">
+                            {% block content_action %}{% endblock %}
+                          </div>
+                        {% endif %}
+                        <ul class="nav nav-tabs">
+                          {% block content_primary_nav %}{% endblock %}
+                        </ul>
+                      </header>
+                    {% endblock %}
+                    <div class="module-content">
+                      {% if self.page_primary_action() | trim %}
+                        <div class="page_primary_action">
+                          {% block page_primary_action %}{% endblock %}
+                        </div>
+                      {% endif %}
+                      {% block primary_content_inner %}
+                      {% endblock %}
+                    </div>
+                  </article>
+                {% endblock %}
+              </div>
+            {% endblock %}
+          </div>
+        {% endblock %}
+      </div>
+    </div>
+
+       <!-- Fin Bloque super.content @ page -->
+	<!-- Fin bloque content @ page -->
+  {% endblock %}
+			</div>
+    {# fin emulación block/block--system-main-block.html.twig #}
+  {# fin emulación region/region.html.twig #}
+		</div>
+	</div>
+  {%- block footer %}<!-- Bloque footer @ page -->
+    {% include "footer.html" %}
+    <!-- Fin bloque footer @ page -->
+  {% endblock -%}
+	
+
+</div>
+</div>
+{# fin emulación page/page.html.twig #}
+{% endblock %}
+
+{% block links %}
+   {{ super() }}
+	{% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
+   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/node_modules/bootstrap-icons/font/bootstrap-icons.css?rn52gy" />
+   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/build/css/main.style.css?rn52gy" />
+   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/build/css/karen.css?rn52gy" />
+   <link rel="stylesheet" href="/iepnb.css" />
+   <link rel="stylesheet" href="/{{main_css[10:-4]}}.css" />
+{% endblock %}
+{% block styles %}
+	{% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
+	<style>
+       @container iepnb_section (min-width: 4px) {
+	     @import url('/base/{{main_css[6:-4]}}.css');
+	     }
+	</style>
+   {# {{ super() }} #}
+{% endblock %}
+{% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}
