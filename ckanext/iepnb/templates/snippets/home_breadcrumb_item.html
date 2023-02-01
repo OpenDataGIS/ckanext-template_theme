@@ -1,9 +1,11 @@
 {# Used to insert the home icon into a breadcrumb #}
-<li><a href = "{{ h.iepnb_home() }}" aria-label="{{ _('Home') }}"><span> {{ _('Home') }}</span></a></li>
-{% set lista = h.iepnb_path().split(',') %}
 {% set ns = namespace(found=false) %}
-{% set ns.ruta = h.iepnb_home() %}
-{% for elemento in lista %}
-   {% set ns.ruta = ns.ruta + '/' + h.iepnb_to_url_segment(elemento) %}
-<li><a href="{{ ns.ruta }}" aria-label="{{ _('Home') }}"><span> {{ elemento }}</span></a></li>
+{% set ns.lang='' %}
+{% if h.lang() != "" and h.lang() != h.iepnb_locale_default() %}
+  {% set ns.lang = '/' + h.lang() %}
+{% endif %}
+<li><a href = "{{ns.lang}}/" aria-label="{{ _('Home') }}"><span> {{ _('Home') }}</span></a></li>
+{% set breadcrumbs = h.iepnb_breadcrumbs(h.lang()) %}
+{% for elemento in h.iepnb_decode_json(breadcrumbs) %}
+<li><a href="{{ns.lang}}{{ elemento.relative }}" aria-label="{{ elemento.description }}"><span> {{ elemento.title }}</span></a></li>
 {% endfor %}

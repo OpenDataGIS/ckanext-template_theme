@@ -1,6 +1,6 @@
-[![Tests](https://github.com/OpenDataGIS/ckanext-iepnb_theme/workflows/Tests/badge.svg?branch=main)](https://github.com/OpenDataGIS/ckanext-iepnb_theme/actions)
+[![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Tests/badge.svg?branch=main)](https://github.com/TRAGSATEC/ckanext-iepnb/actions)
 
-# ckanext-iepnb_theme
+# ckanext-iepnb
 
 **TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
 
@@ -35,7 +35,7 @@ Suggested values:
    For example installing any non-Python dependencies or adding any required
    config settings.
 
-To install ckanext-iepnb_theme:
+To install ckanext-iepnb:
 
 1. Activate your CKAN virtual environment, for example:
 
@@ -43,8 +43,8 @@ To install ckanext-iepnb_theme:
 
 2. Clone the source and install it on the virtualenv
 
-    git clone https://github.com/OpenDataGIS/ckanext-iepnb_theme.git
-    cd ckanext-iepnb_theme
+    git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
+    cd ckanext-iepnb
     pip install -e .
 	pip install -r requirements.txt
 
@@ -70,11 +70,11 @@ None at present
 
 ## Developer installation
 
-To install ckanext-iepnb_theme for development, activate your CKAN virtualenv and
+To install ckanext-iepnb for development, activate your CKAN virtualenv and
 do:
 
-    git clone https://github.com/OpenDataGIS/ckanext-iepnb_theme.git
-    cd ckanext-iepnb_theme
+    git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
+    cd ckanext-iepnb
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -86,9 +86,9 @@ To run the tests, do:
     pytest --ckan-ini=test.ini
 
 
-## Releasing a new version of ckanext-iepnb_theme
+## Releasing a new version of ckanext-iepnb
 
-If ckanext-iepnb_theme should be available on PyPI you can follow these steps to publish a new version:
+If ckanext-iepnb should be available on PyPI you can follow these steps to publish a new version:
 
 1. Update the version number in the `setup.py` file. See [PEP 440](http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers) for how to choose version numbers.
 

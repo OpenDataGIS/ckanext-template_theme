@@ -1,14 +1,15 @@
 # iepnb-js:
 #   filter: rjsmin
-#   output: ckanext-iepnb_theme/%(version)s-iepnb.js
+#   output: ckanext-iepnb/%(version)s-iepnb.js
 #   contents:
 #     - js/iepnb.js
 #   extra:
 #     preload:
 #       - base/main
 
-# iepnb-css:
-#   filter: cssrewrite
-#   output: ckanext-iepnb_theme/%(version)s-iepnb.css
-#   contents:
-#     - css/iepnb.css
+iepnb-css:
+  filter: cssrewrite
+  output: ckanext-iepnb/%(version)s-iepnb.css
+  contents:
+    - css/iepnb.css
+

@@ -26,7 +26,7 @@ setup(
     url='https://github.com/TRAGSATEC/ckanext-iepnb',
 
     # Author details
-    author='''Daniel Sanjurjo''',
+    author='''dsanjurj@tragsa.es''',
     author_email='''dsanjurj@tragsa.es''',
 
     # Choose your license

@@ -1,10 +1,9 @@
 {% ckan_extends %}
-
-{# El bloque page es todo lo que va dentro del body #}
-{% block page %}
-<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
-{# inicio emulación page/page.html.twig #}
-<div class="page">
+{# El bloque page es todo lo que va dentro del body -#}
+{% block page -%}
+    <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+{#- inicio emulación page/page.html.twig #}
+      <div class="page">
   {%- block header %}<!-- Bloque header @ page -->
     {% include "header.html" %}
     <!-- Fin bloque header @ page -->
@@ -54,7 +53,7 @@
 <!-- Bloques content @ page -->
 
        <!-- Bloque super.content @ page -->
-    {% block maintag %}<div class="main">{% endblock %}
+    {% block maintag %}<div class="main" id="iepnb_ckan">{% endblock %}
       <div id="content" class="container">
         {% block main_content %}
           {% block flash %}
@@ -162,21 +161,19 @@
 {% endblock %}
 
 {% block links %}
-   {{ super() }}
+    <link rel="shortcut icon" href="{{ h.url_for_static(g.favicon) }}" />
 	{% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
-   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/node_modules/bootstrap-icons/font/bootstrap-icons.css?rn52gy" />
-   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/build/css/main.style.css?rn52gy" />
-   <link rel="stylesheet" href="https://iepnb-des.tragsatec.es/themes/custom/iepnb/build/css/karen.css?rn52gy" />
-   <link rel="stylesheet" href="/iepnb.css" />
-   <link rel="stylesheet" href="/{{main_css[10:-4]}}.css" />
+   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/build/css/main.style.css" />
+   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/build/css/karen.css" />
+   <link rel="stylesheet" href="{{h.iepnb_home()}}/core/modules/layout_builder/layouts/twocol_section/twocol_section.css" />
+   <!-- Fin block links -->
 {% endblock %}
 {% block styles %}
-	{% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
-	<style>
-       @container iepnb_section (min-width: 4px) {
-	     @import url('/base/{{main_css[6:-4]}}.css');
-	     }
-	</style>
+    <!-- Inicio block styles -->
+    {% asset 'ckanext-iepnb/iepnb-css' %}
+    {% asset 'ckanext-iepnb/iepnb-green-css' %}
+    
    {# {{ super() }} #}
 {% endblock %}
 {% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}

@@ -1,3 +1,4 @@
+{% snippet "snippets/language_selector.html" %}
 	<footer class="footer py-4 iepnb">
 		<div class="container">
 			<div class="d-flex justify-content-md-between align-items-md-center">
@@ -7,19 +8,19 @@
       {# inicio emulación menu/menu--footer.html.twig #}
  					<ul class="nav">
 						<li class="nav-item">
-							<a href="https://iepnb-des.tragsatec.es/contact" class="nav-link" data-drupal-link-system-path="contact">Contacto</a>
+							<a href="{{h.iepnb_home()}}/contact" class="nav-link" data-drupal-link-system-path="contact">Contacto</a>
 						</li>
 						<li class="menu-icon menu-icon-8 nav-item">
-							<a href="https://iepnb-des.tragsatec.es/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;"> Accesibilidad</a>
+							<a href="{{h.iepnb_home()}}/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;"> Accesibilidad</a>
 						</li>
 						<li class="menu-icon menu-icon-9 nav-item">
-							<a href="https://iepnb-des.tragsatec.es/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Política de privacidad</a>
+							<a href="{{h.iepnb_home()}}/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Política de privacidad</a>
 						</li>
 						<li class="menu-icon menu-icon-10 nav-item">
-							<a href="https://iepnb-des.tragsatec.es/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Política de cookies</a>
+							<a href="{{h.iepnb_home()}}/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Política de cookies</a>
 						</li>
 						<li class="menu-icon menu-icon-11 nav-item">
-							<a href="https://iepnb-des.tragsatec.es/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Aviso legal</a>
+							<a href="{{h.iepnb_home()}}/" class="nav-link" data-drupal-link-system-path="&lt;front&gt;">Aviso legal</a>
 						</li>
 					</ul>
       {# fin emulación menu/menu--footer.html.twig #}
@@ -32,7 +33,7 @@
 					<div class="field field--name-field-image field--type-entity-reference field--label-hidden field__item">
         {# inicio emulación core/modules/image/templates/image-formatter.html.twig #}
           {# inicio emulación field/image.html.twig #}
-						<img src="https://iepnb-des.tragsatec.es/sites/default/files/2022-07/logo_ministerio_bn.png" width="336" height="69" alt="logo gobierno" loading="lazy" typeof="foaf:Image" class="img-fluid" />
+						<img src="{{h.iepnb_home()}}/sites/default/files/2022-07/logo_ministerio_bn.png" width="336" height="69" alt="logo gobierno" loading="lazy" typeof="foaf:Image" class="img-fluid" />
           {# fin emulación field/image.html.twig' #}
         {# fin emulación core/modules/image/templates/image-formatter.html.twig #}
 					</div>      
