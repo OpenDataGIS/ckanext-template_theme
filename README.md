@@ -1,16 +1,12 @@
-[![Tests](https://github.com/TRAGSATEC/ckanext-iepnb/workflows/Tests/badge.svg?branch=main)](https://github.com/TRAGSATEC/ckanext-iepnb/actions)
+#CKAN-IEPNB - Customization
 
-# ckanext-iepnb
+ckan-iepnb is a customization of ckan to use it as a iepnb extension, sharing styles, images and other assets with the main site, merging with it in the same server
 
-**TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
+Honor and praise to the developer of this extension: <a href="mailto:dsanjurj@tragsa.es">**dsanjurj@tragsa.es**</a>
 
+Contact him if **you** do something wrong and mistakenly believe is a code issue
 
 ## Requirements
-
-**TODO:** For example, you might want to mention here which versions of CKAN this
-extension works with.
-
-If your extension works across different versions you can add the following table:
 
 Compatibility with core CKAN versions:
 
@@ -19,7 +15,7 @@ Compatibility with core CKAN versions:
 | 2.6 and earlier | not tested    |
 | 2.7             | not tested    |
 | 2.8             | not tested    |
-| 2.9             | not tested    |
+| 2.9             | yes    |
 
 Suggested values:
 
@@ -39,34 +35,47 @@ To install ckanext-iepnb:
 
 1. Activate your CKAN virtual environment, for example:
 
-     . /usr/lib/ckan/default/bin/activate
+     `. /usr/lib/ckan/default/bin/activate`
 
 2. Clone the source and install it on the virtualenv
 
-    git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
-    cd ckanext-iepnb
-    pip install -e .
-	pip install -r requirements.txt
+    `git clone https://github.com/TRAGSATEC/ckanext-iepnb.git`
+    
+    `cd ckanext-iepnb`
+    
+    `pip install -e .`
+    
+	`pip install -r requirements.txt` (actually not mandatory, but is a good habit) 
 
 3. Add `iepnb` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
    `/etc/ckan/default/ckan.ini`).
+   
+4. Add iepnb specific configuration to the CKAN config file
 
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
+5. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
 
-     sudo service apache2 reload
+     `sudo service apache2 reload`
 
 
 ## Config settings
 
-None at present
+At CKAN config .ini file (in `/etc/ckan/default` dir), in the [app:main] section, add:
 
-**TODO:** Document any optional config settings here. For example:
+	#Server to download menu and breadcrumbs
+	iepnb.server = https://some_server
 
-	# The minimum number of hours to wait before re-checking a resource
-	# (optional, default: 24).
-	ckanext.iepnb.some_setting = some_default_value
+	#default breadcrumbs
+	iepnb.breadcrumbs = [{"title":"Some literal","description":"Some description", "relative":"relative_path_from_iepnb.server"},...]
 
+	#relative path to download menu in iepnb.server
+	iepnb.path_menu = /api/menu_items/main
+
+	#number of popular tags to show at index page
+	iepnb.popular_tags = 3
+
+	#relative path to download breadcrumbs definition. Will take precedence over iepnb.headcrumbs if defined
+	iepnb.path_breadcrumbs = No_Default_Value 
 
 ## Developer installation
 
@@ -83,7 +92,7 @@ do:
 
 To run the tests, do:
 
-    pytest --ckan-ini=test.ini
+    pytest --ckan-ini=test.ini (not implemented yet) 
 
 
 ## Releasing a new version of ckanext-iepnb
