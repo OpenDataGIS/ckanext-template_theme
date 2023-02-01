@@ -1,4 +1,4 @@
-#CKAN-IEPNB - Customization
+# CKAN-IEPNB - Customization
 
 ckan-iepnb is a customization of ckan to use it as a iepnb extension, sharing styles, images and other assets with the main site, merging with it in the same server
 
