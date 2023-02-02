@@ -27,10 +27,6 @@ Suggested values:
 
 ## Installation
 
-**TODO:** Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
-
 To install ckanext-iepnb:
 
 1. Activate your CKAN virtual environment, for example:
@@ -60,7 +56,7 @@ To install ckanext-iepnb:
 
 ## Config settings
 
-At CKAN config .ini file (in `/etc/ckan/default` dir), in the [app:main] section, add:
+At CKAN config .ini file (in `/etc/ckan/default` dir), into the [app:main] section, add:
 
 	#Server to download menu and breadcrumbs
 	iepnb.server = https://some_server

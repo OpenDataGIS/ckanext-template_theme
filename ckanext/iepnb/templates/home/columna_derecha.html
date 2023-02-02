@@ -45,7 +45,23 @@
                 </div>
               </div>
             </div>
-            <div class="contenedor_grupos_organizaciones">
+          <div role="main"> <!-- Inicio bloque organizaciones/grupos -->
+            <div class="container">
+              <div class="row row2">
+                <div class="col-md-6 col2">
+        {% block featured_organization %}
+          {% snippet 'home/snippets/featured_organization.html' %}
+        {% endblock %}
+                </div>
+                <div class="col-md-6 col1">
+        {% block featured_group %}
+          {% snippet 'home/snippets/featured_group.html' %}
+        {% endblock %}
+                </div>
+              </div>
+            </div>
+          </div> 
+ {#           <div class="contenedor_grupos_organizaciones"><!-- Inicio bloque organizaciones/grupos -->
               <div class="contenedor_iepnb">
                 <div class="contenedor_verde_izq">
                   <div class="contenedor_texto_e_img">
@@ -95,7 +111,10 @@
                 </div>
               </div>
             </div>
+            <!-- Inicio home/layout -->
     {% snippet "/home/layout{0}.html".format(homepage_style) %}
+            <!-- Fin home/layout -->
+      #}          
           </div>
         </div>
       </div>
