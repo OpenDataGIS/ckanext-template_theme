@@ -39,7 +39,7 @@ To install ckanext-iepnb:
 
 2. Clone the source and install it on the virtualenv
 
-    `git clone https://github.com/TRAGSATEC/ckanext-iepnb.git`
+    `git clone https://github.com/OpenDataGIS/ckanext-iepnb.git`
     
     `cd ckanext-iepnb`
     
