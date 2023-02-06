@@ -109,13 +109,6 @@
     padding-left: 10px;
     padding-right: 10px;	
 }
-.block--iepnb-content h1.catalogo_datos_con_linea {
-    margin-top: 10px;
-    padding-left: 20px;
-    font-family: Raleway, sans-serif;
-    font-size: 30px;
-    font-weight: 400;
-}
 .contenedor_links .paragraph span{
     color: #83b62c;
     font-size: 20px;
@@ -172,10 +165,6 @@
     line-height: 22px;
     font-weight: 400;
     text-align: left;
-}
-.block--iepnb-content .block.block-layout-builder.block-field-blocknodepagina-interior-simplebody {
-    padding-right: 0;
-    padding-left: 0;
 }
 .contenedor_introduccion {
     display: -webkit-box;
@@ -240,14 +229,6 @@
     margin-bottom: 40px;
     margin-left: 5%;
 }
-.block--iepnb-content .contenedor_input_principal img {
-    height: 30px;
-    margin-top: auto;
-    margin-bottom: auto;
-    max-width: 100%;
-    vertical-align: middle;
-    display: inline-block;
-}
 .contenedor_cabecera_secc_generica.catalogo {
     margin-top: 0px;
     background-image: url(../../img/cabecera_catalogo.jpg);
@@ -295,14 +276,54 @@
     font-size: 40px;
     font-weight: 600;
 }
+/* Las propiedades que ckan asigna a los bloques body y html se guardan en variables para poder editar el
+fichero de estilos y poder emplearlas donde se requieren, manteniendo la facilidad de cambiarlas en un 
+único punto */
+.block--iepnb-content {
+  --iepnb-root-font-size: 10px;
+  --iepnb-body-font-size: 14px;
+  --iepnb-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --iepnb-line-height: 1.42857143;
+  --iepnb-color: #333333;
+  --iepnb-background-color: #fff;
+  font-size: var(--iepnb-body-font-size);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: var("Helvetica Neue", Helvetica, Arial, sans-serif);
+  line-height: var(--iepnb-line-height);
+  color: var(--iepnb-color);
+  background-color: var(--iepnb-background-color);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+}
+
+.block--iepnb-content * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 .block--iepnb-content {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
 }
-.block--iepnb-content {
-  margin: 0;
+.block--iepnb-content h1.catalogo_datos_con_linea {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-family: Raleway, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+.block--iepnb-content .block.block-layout-builder.block-field-blocknodepagina-interior-simplebody {
+    padding-right: 0;
+    padding-left: 0;
+}
+.block--iepnb-content .contenedor_input_principal img {
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
 }
 .block--iepnb-content article,
 .block--iepnb-content aside,
@@ -1350,27 +1371,11 @@
 .block--iepnb-content .glyphicon-menu-up:before {
   content: "\e260";
 }
-.block--iepnb-content * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .block--iepnb-content *:before,
 .block--iepnb-content *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-.block--iepnb-content html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-.block--iepnb-content body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333333;
-  background-color: #fff;
 }
 .block--iepnb-content input,
 .block--iepnb-content button,
@@ -8374,7 +8379,7 @@
   text-decoration: none;
   line-height: 1.5rem;
   z-index: -1;
-  font-size: 1rem;
+  font-size: var(--iepnb-root-font-size);
   display: flex;
   justify-content: center;
   align-content: center;
