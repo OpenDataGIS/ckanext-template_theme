@@ -35,7 +35,7 @@ To install ckanext-iepnb:
 
 2. Clone the source and install it on the virtualenv
 
-    `git clone https://github.com/TRAGSATEC/ckanext-iepnb.git`
+    `git clone https://github.com/OpenDataGIS/ckanext-iepnb.git`
     
     `cd ckanext-iepnb`
     
@@ -58,14 +58,14 @@ To install ckanext-iepnb:
 
 At CKAN config .ini file (in `/etc/ckan/default` dir), into the [app:main] section, add:
 
-	#Server to download menu and breadcrumbs
+	#Server to download menu and breadcrumbs. Demo assets server: https://github.com/OpenDataGIS/ckanext-iepnb_assets
 	iepnb.server = https://some_server
 
 	#default breadcrumbs
 	iepnb.breadcrumbs = [{"title":"Some literal","description":"Some description", "relative":"relative_path_from_iepnb.server"},...]
 
-	#relative path to download menu in iepnb.server
-	iepnb.path_menu = /api/menu_items/main
+	#relative path to download menu in iepnb.server. Demo path_menu in ckanext-iepnb_assets: /main.json
+	iepnb.path_menu = /api/menu_items/main         
 
 	#number of popular tags to show at index page
 	iepnb.popular_tags = 3
