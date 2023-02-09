@@ -139,11 +139,12 @@
    <link rel="stylesheet" href="{{h.iepnb_home()}}/core/modules/layout_builder/layouts/twocol_section/twocol_section.css" />
    <!-- Fin block links -->
 {% endblock %}
+{#
 {% block styles %}
     <!-- Inicio block styles -->
     {% asset 'ckanext-iepnb/iepnb-css' %}
-    {% asset 'ckanext-iepnb/iepnb-green-css' %}
     
-   {# {{ super() }} #}
+    {{ super() }} 
 {% endblock %}
+#}
 {% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}
