@@ -15,8 +15,9 @@
 			<div data-drupal-messages-fallback class="hidden"></div>
     {# fin emulación core/modules/system/templates/block--system-messages-block.html.twig #}
           {% block toolbar %}
-            <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}">
+            <!-- <div class="toolbar" role="navigation" aria-label="{{ _('Breadcrumb') }}"> -->
               {% block breadcrumb %}
+              <!--  Inicio bloque breadcrumb -->
               <div class="layout layout--onecol">
                 <div  class="layout__region layout__region--content">
  <!-- THEME DEBUG -->
@@ -33,7 +34,9 @@
 <!-- BEGIN OUTPUT from 'themes/custom/iepnb/templates/navigation/breadcrumb.html.twig' -->
                     <nav aria-label="breadcrumb" class="">
                       <ol class="breadcrumb">
-                          {% snippet 'snippets/home_breadcrumb_item.html' %}
+                          {% block home_breadcrumb %}
+                              {% snippet 'snippets/home_breadcrumb_item.html' %}
+                          {% endblock %}
                           {% block breadcrumb_content %}{% endblock %}
                       </ol>
                     </nav>
@@ -43,8 +46,9 @@
 <!-- END OUTPUT from 'themes/custom/iepnb/templates/block/block.html.twig' -->
                 </div>
               </div>
+              <!--  Fin bloque breadcrumb -->
              {% endblock %}
-            </div>
+            <!-- </div> -->
           {% endblock %}
     {# inicio emulación block/block--system-main-block.html.twig #}
             <div class="block block--iepnb-content block-system block-system-main-block">
@@ -132,19 +136,24 @@
 
 {% block links %}
     <link rel="shortcut icon" href="{{ h.url_for_static(g.favicon) }}" />
-	{% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
-   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/node_modules/bootstrap-icons/font/bootstrap-icons.css" />
-   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/build/css/main.style.css" />
-   <link rel="stylesheet" href="{{h.iepnb_home()}}/themes/custom/iepnb/build/css/karen.css" />
-   <link rel="stylesheet" href="{{h.iepnb_home()}}/core/modules/layout_builder/layouts/twocol_section/twocol_section.css" />
+
    <!-- Fin block links -->
 {% endblock %}
-{#
+
 {% block styles %}
     <!-- Inicio block styles -->
-    {% asset 'ckanext-iepnb/iepnb-css' %}
-    
-    {{ super() }} 
+    {# {% asset 'ckanext-iepnb/iepnb-css' %} #}
+    {% set main_css = h.get_rtl_css() if h.is_rtl_language() else g.main_css %}
+    <!-- {{main_css}}-->
+    <!-- {{h.is_rtl_language()}} -->
+    <!-- {{g.main_css}} -->
+    <!-- llamada a super() -->
+    {{ super() }}
+    <!-- Fin block styles --> 
 {% endblock %}
-#}
+{%- block custom_styles %}
+   {{ super() }}
+{% snippet "snippets/external_styles.html" %} 
+   <link rel="stylesheet" href="{{ h.url_for_static('css/iepnb.css') }}" />
+{% endblock %}
 {% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}

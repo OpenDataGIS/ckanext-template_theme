@@ -18,5 +18,23 @@
     </div><!-- End layout--twocol-section layout--twocol-section--25-75 -->
   </div>
 {% endblock %}
-
+{% block home_breadcrumb %}
+  {% set ns = namespace(found=false) %}
+  {% set ns.lang='' %}
+  {% set ns.breadcrumbs_count=0 %}
+  {% if h.lang() != "" and h.lang() != h.iepnb_locale_default() %}
+    {% set ns.lang = '/' + h.lang() %}
+  {% endif %}
+  <li><a href = "{{ns.lang}}/" aria-label="{{ _('Home') }}"><span> {{ _('Home') }}</span></a></li>
+  {% set breadcrumbs = h.iepnb_decode_json(h.iepnb_breadcrumbs(h.lang())) %}
+  {% set ns.breadcrumbs_count = breadcrumbs | length %}
+  {%- for elemento in breadcrumbs %}
+    {% set ns.breadcrumbs_count= ns.breadcrumbs_count-1 %}
+    {% if ns.breadcrumbs_count>0 %}
+      <li><a href="{{ns.lang}}{{ elemento.relative }}" aria-label="{{ elemento.description }}"><span> {{ elemento.title }}</span></a></li>
+    {%- else -%}
+      <li class="active"><span> {{ elemento.title }}</span></li>
+    {%- endif -%}    
+  {%- endfor %}
+{% endblock %}
 

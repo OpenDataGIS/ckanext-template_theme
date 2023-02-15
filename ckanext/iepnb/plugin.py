@@ -125,8 +125,7 @@ class IepnbPlugin(plugins.SingletonPlugin):
 
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic',
-            'iepnb')
+        toolkit.add_resource('fanstatic', 'iepnb')
         toolkit.add_resource('assets', 'ckanext-iepnb')
        
         server_menu = config.get('iepnb.server', 'https://iepnb-des.tragsatec.es')
