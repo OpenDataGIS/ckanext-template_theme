@@ -110,12 +110,85 @@ footer.iepnb li a {
     display: inline-block;
 }
 
+.homepage .estadisticas {
+	min-width: 10em;
+}
+
+/* Pantalla pequeña: columna_izquierda una columna arriba y contenedor_principal en una columna debajo. */
+.columna_buscador{
+	width:100%
+}
+.columna_etiquetas{
+	width:100%
+}
+
+.contenedor_buscador_datos, .bloque_organizaciones-grupos {
+	display: block;
+	margin-right: 5%;
+    margin-left: 5%;
+}
+.columna_buscador, .columna_etiquetas, .contenedor_buscador_datos {
+	margin-bottom: 40px;
+}
+
+.bloque_organizaciones-grupos>div>div {
+	margin-bottom: 40px;
+}
+
+.columna-izquierda{
+	margin-left:5%;
+}
+
+@media (min-width: 27.5em)
+{
+	/* Pantalla media: columna_izquierda arriba en dos columnas, arriba, y contenedor_principal en dos debajo */
+	.columna-izquierda{
+		display:flex;
+	}
+	
+	.contenedor_buscador_datos {
+		display: flex;
+	}
+	.columna_buscador, .columna_etiquetas {
+		margin-bottom: 0;
+	}
+	.columna_buscador{
+		width:60%
+	}
+	.columna_etiquetas{
+		width:40%
+	}
+	
+}
+
+
+@media (min-width: 55em)
+{
+	/* Pantalla ancha: columna_izquierda a la izquierda en una columna y contenedor_principal a la derecha en dos */
+	.columna-izquierda{
+		display:block;
+		padding-right:1em;
+	}
+	.contenedor-principal{
+		display:flex;
+	}
+	
+	.bloque_organizaciones-grupos>div>div {
+		margin-bottom: unset;
+	}
+	
+	.bloque_organizaciones-grupos {
+		margin-bottom: 40px;
+	}
+	
+}
+
 .menu_area_privada {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 250px;
+  width: 100%;
   margin-top: 12px;
   margin-bottom: 12px;
   -webkit-box-pack: start;
@@ -145,7 +218,7 @@ footer.iepnb li a {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -177,10 +250,11 @@ footer.iepnb li a {
     background-repeat: no-repeat;
 }
 
-.layout__region--first
+.bloque_columna_derecha
 {
-    padding-left: 10px;
-    padding-right: 10px;	
+    border-left: 1px solid #e5e5e5;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 .contenedor_links .paragraph span{
     color: #83b62c;
@@ -193,7 +267,7 @@ footer.iepnb li a {
 
 .paragraph {
   color: #000;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -224,12 +298,14 @@ footer.iepnb li a {
     -ms-flex-align: start;
     align-items: flex-start;
 }
-.layout__region--first .espaciador
+.columna-izquierda .espaciador
 {
 	height: 1px;
     margin-top: 20px;
     margin-bottom: 30px;
     background-color: #e5e5e5;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 .parrafo_catalogo_datos {
     margin-bottom: 0px;
@@ -297,11 +373,7 @@ footer.iepnb li a {
     border-color: #3898EC;
     outline: 0;
 }
-.contenedor_buscador_datos {
-    margin-right: 5%;
-    margin-bottom: 40px;
-    margin-left: 5%;
-}
+
 .contenedor_cabecera_secc_generica.catalogo {
     margin-top: 0px;
     background-image: url(../../img/cabecera_catalogo.jpg);
@@ -317,13 +389,12 @@ footer.iepnb li a {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background-color: #dadada;
-    width: 33.33333333%;
     position: relative;
     float: left;
-    width: 100%;
     min-height: 1px;
     padding-left: 10px;
     padding-right: 10px;
+    overflow: hidden;
 }
 .__layout__region .w_row{
 	margin-left: 0;
@@ -375,6 +446,8 @@ footer.iepnb li a {
 
 .block--iepnb-content .main {
 	padding-top: unset;
+	margin-left: auto;
+    margin-right: auto;
 }
 .block--iepnb-content {
 /*  font-family: sans-serif;*/
@@ -402,7 +475,7 @@ footer.iepnb li a {
 }
 
 @media (min-width: 768px) {
-.block--iepnb-content  .container {
+#iepnb_ckan {
     	max-width: 750px;
     	width: 750px;
 	}
@@ -410,7 +483,7 @@ footer.iepnb li a {
 }
 
 @media (min-width: 992px) {
-.block--iepnb-content  .container {
+#iepnb_ckan {
     	max-width: 970px;
     	width: 970px;
 	}
@@ -418,7 +491,7 @@ footer.iepnb li a {
 }
 
 @media (min-width: 1200px) {
-.block--iepnb-content  .container {
+#iepnb_ckan {
     	max-width: 1170px;
     	width: 1170px;
 	}

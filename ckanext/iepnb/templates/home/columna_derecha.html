@@ -4,16 +4,15 @@
 {% set placeholder = _('E.g. environment') %}
 
   {% block primary_content %}
-      <div class="layout__region layout__region--second">
-        <div class="layout__region layout__region--second">
-          <div class="block block-layout-builder block-field-blocknodepagina-interior-simplebody">
+      <div class="columna_derecha">
+          <div class="bloque_columna_derecha">
     {#!-- EMBEBER LOTERIA NAVIDAD -->		<iframe  src='https://www.rtve.es/components/loteria/navidad/embeber.html' frameborder='0' height='350' width='100%' scrolling='yes'></iframe>		<!-- FIN EMBEBER LOTERIA NAVIDAD --> #}
             <div class="contenedor_introduccion">
               <div class="resaltado">
                 <p class="parrafo_catalogo_datos">El Catálogo de datos del <strong>Inventario Español del patrimonio Natural y la Biodiversidad</strong> es una aplicación con tecnología CKAN que se utiliza para distribuir mapas, datos y metadatos espaciales en la web.</p>
               </div>
             </div>
-            <div class="contenedor_buscador_datos layout--twocol-section layout--twocol-section--67-33">
+            <div class="contenedor_buscador_datos">
               <div class="columna_buscador layout__region--first">
                 <div class="w-form">
                   <form id="wf-form-Etiqueta-Form" name="wf-form-Etiqueta-Form" data-name="Etiqueta Form" method="get" aria-label="Etiqueta Form" action="{% url_for 'dataset.search' %}">
@@ -45,8 +44,8 @@
                 </div>
               </div>
             </div>
-          <div role="main" class="layout--twocol-section"> <!-- Inicio bloque organizaciones/grupos -->
-            <div class="container">
+          <div class="bloque_organizaciones-grupos"> <!-- Inicio bloque organizaciones/grupos -->
+            <!-- <div class="container"> --> 
               <div class="row row2">
                 <div class="col-md-6 col2">
         {% block featured_organization %}
@@ -59,7 +58,7 @@
         {% endblock %}
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div> 
  {#           <div class="contenedor_grupos_organizaciones"><!-- Inicio bloque organizaciones/grupos -->
               <div class="contenedor_iepnb">
@@ -116,6 +115,6 @@
             <!-- Fin home/layout -->
       #}          
           </div>
-        </div>
+        
       </div>
   {% endblock %}
