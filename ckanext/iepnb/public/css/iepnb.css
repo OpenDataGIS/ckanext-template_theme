@@ -104,6 +104,11 @@ footer.iepnb li a {
 	text-decoration:none;
 }
 
+button.image {
+	border:0;
+	background-color:rgba(25,255,255,0);
+}
+
 .image-4 {
     max-width: 15%;
     padding-right: 10px;

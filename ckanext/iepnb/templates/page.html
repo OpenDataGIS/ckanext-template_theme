@@ -155,5 +155,8 @@
   {{ super() }}
   {% snippet "snippets/external_styles.html" %} 
    <link rel="stylesheet" href="{{ h.url_for_static('css/iepnb.css') }}" />
+   {% if g.debug %}
+   <link rel="stylesheet" href="{{ h.url_for_static('css/geo-resource-styles.css') }}" />
+   {%- endif %}
 {% endblock %}
 {% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}
