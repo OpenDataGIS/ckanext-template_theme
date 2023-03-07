@@ -449,9 +449,19 @@ footer.iepnb li a {
 	margin-left: auto;
     margin-right: auto;
 }
-.block--iepnb-content {
-/*  font-family: sans-serif;*/
+
+.modal-backdrop.fade {
+    opacity: 0.5;
 }
+
+.modal.fade:not(.show) {
+  opacity: unset;
+}
+
+.collapse:not(.show)  .modal-content {
+  display: block;
+}
+
 .block--iepnb-content h1.catalogo_datos_con_linea {
     margin-top: 10px;
     padding-left: 20px;
