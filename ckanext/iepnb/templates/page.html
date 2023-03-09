@@ -136,9 +136,8 @@
 
 {% block links %}
     <link rel="shortcut icon" href="{{ h.url_for_static(g.favicon) }}" />
-
    <!-- Fin block links -->
-{% endblock %}
+{% endblock -%}
 
 {% block styles %}
     <!-- Inicio block styles -->
@@ -155,8 +154,20 @@
   {{ super() }}
   {% snippet "snippets/external_styles.html" %} 
    <link rel="stylesheet" href="{{ h.url_for_static('css/iepnb.css') }}" />
-   {% if g.debug %}
+   {#% if g.debug %}
    <link rel="stylesheet" href="{{ h.url_for_static('css/geo-resource-styles.css') }}" />
-   {%- endif %}
+
+   <link rel="stylesheet" href="{{ h.url_for_static('js/vendor/leaflet/1.9.3/leaflet.css') }}" />
+   <link rel="stylesheet" href="{{ h.url_for_static('js/vendor/leaflet.draw/0.4.14/leaflet.draw.css') }}" />
+   <link rel="stylesheet" href="{{ h.url_for_static('css/spatial_query.css') }}" />
+   {%- endif %#}
 {% endblock %}
 {% block bodytag %} class="node-16 node-type--pagina-interior-simple" {{ super() }} {% endblock %}
+{#%- block scripts %}
+  {{ super() }}
+   <script src="{{ h.url_for_static('js/vendor/leaflet/1.9.3/leaflet.js') }}"></script>
+   <script src="{{ h.url_for_static('js/vendor/leaflet.draw/0.4.14/leaflet.draw.js') }}"></script>
+   <script src="{{ h.url_for_static('js/common_map.js') }}"></script>
+   <script src="{{ h.url_for_static('js/spatial_query.js') }}"></script>  
+{% endblock -%#}
+
