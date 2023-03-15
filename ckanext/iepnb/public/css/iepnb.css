@@ -459,7 +459,10 @@ button.image {
   opacity: unset;
 }
 
-.collapse:not(.show)  .modal-content {
+.collapse:not(.show)  .modal-content, 
+#package.collapse.in,
+#organization.collapse.in,
+#group.collapse.in  {
   display: block;
 }
 
