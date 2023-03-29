@@ -38,29 +38,61 @@ To install ckanext-iepnb:
 
 2. Clone the source and install it on the virtualenv
 
-    `git clone https://github.com/OpenDataGIS/ckanext-iepnb.git`
-    
-    `cd ckanext-iepnb`
-    
-    `pip install -e .`
-    
-	`pip install -r requirements.txt` (actually not mandatory, but is a good habit) 
+    ```
+    git clone https://github.com/OpenDataGIS/ckanext-iepnb.git
+    cd ckanext-iepnb
+    pip install -e .
+	pip install -r requirements.txt (actually not mandatory, but is a good habit)
+    ```
 
 3. Add `iepnb` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
    `/etc/ckan/default/ckan.ini`).
    
-4. Add iepnb specific configuration to the CKAN config file
+4. Clear the index in solr:
 
-5. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
+	`ckan -c [route to your .ini ckan config file] search-index clear`
+   
+5. Modify the schema file on Solr (schema or managed schema) to add this fields (if 
+   they dont exist yet):
+   
+	- theme_es
+	- tag_uri
+	- conforms_to
+	- lineage_source
+	- lineage_process_step
+	- reference
+	- theme
+	- resource_relation
+	
+	All of them with these atributes:
+	
+	- type="string" 			to avoid split the text in tokens, each "faceted" individually
+	- uninvertible="false" 		as recomended by the documentation
+	- docValues="true" 			to ease faceting
+	- multiValued="true" 		to let solr use diferent values in the same field for faceting
+	- indexed="true" 			to let ckan recover resources under this facet
+	
+	Be sure to restart Solr after modify the schema
+		
+6. Add iepnb specific configuration to the CKAN config file
+
+7. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
 
      `sudo service apache2 reload`
+     
+8. Reindex solr index:
+
+	`ckan -c [route to your .ini ckan config file] search-index rebuild`
+
+	Sometimes solr can issue an error while reindexing. In that case I´d try to restart solr, delete index ("search-index clear"), restart solr, rebuild index, and restart solr again.
 
 
 ## Config settings
 
 At CKAN config .ini file (in `/etc/ckan/default` dir), into the [app:main] section, add:
 
+```
 	#Server to download menu and breadcrumbs. Demo assets server: https://github.com/OpenDataGIS/ckanext-iepnb_assets
 	iepnb.server = https://some_server
 
@@ -74,24 +106,30 @@ At CKAN config .ini file (in `/etc/ckan/default` dir), into the [app:main] secti
 	iepnb.popular_tags = 3
 
 	#relative path to download breadcrumbs definition. Will take precedence over iepnb.headcrumbs if defined
-	iepnb.path_breadcrumbs = No_Default_Value 
+	iepnb.path_breadcrumbs = No_Default_Value
+	
+	#list of facets to show in search page, and its order
+	# available facets are: theme_es dcat_theme dcat_type owner_org res_format publisher_identifier publisher_type frequency tag_string tag_uri conforms_to
+	iepnb.facet_list = theme_es dcat_theme dcat_type owner_org res_format publisher_identifier publisher_type frequency tag_string tag_uri conforms_to
+```	
 
 ## Developer installation
 
 To install ckanext-iepnb for development, activate your CKAN virtualenv and
 do:
 
-    git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
-    cd ckanext-iepnb
-    python setup.py develop
-    pip install -r dev-requirements.txt
-
+```bash
+git clone https://github.com/TRAGSATEC/ckanext-iepnb.git
+cd ckanext-iepnb
+python setup.py develop
+pip install -r dev-requirements.txt
+```
 
 ## Tests
 
 To run the tests, do:
 
-    pytest --ckan-ini=test.ini (not implemented yet) 
+`pytest --ckan-ini=test.ini` (not implemented yet) 
 
 
 ## Releasing a new version of ckanext-iepnb
@@ -102,29 +140,39 @@ If ckanext-iepnb should be available on PyPI you can follow these steps to publi
 
 2. Make sure you have the latest version of necessary packages:
 
-    `pip install --upgrade setuptools wheel twine`
+	  ```bash
+      pip install --upgrade setuptools wheel twine
+      ```
 
 3. Create a source and binary distributions of the new version:
 
-    `python setup.py sdist bdist_wheel && twine check dist/*`
+	  ```bash
+      python setup.py sdist bdist_wheel && twine check dist/*
+      ```
 
    Fix any errors you get.
 
 4. Upload the source distribution to PyPI:
 
-    `twine upload dist/*`
+	  ```bash
+      twine upload dist/*
+      ```
 
 5. Commit any outstanding changes:
 
-    `git commit -a
-    git push`
+	  ```bash
+      git commit -a
+	  git push
+      ```
 
 6. Tag the new release of the project on GitHub with the version number from
    the `setup.py` file. For example if the version number in `setup.py` is
    0.0.1 then do:
-
-       `git tag 0.0.1
-       git push --tags`
+   
+	```bash
+	  git tag 0.0.1
+	  git push --tags
+	```
 
 ## License
 
