@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
 
     # The project's main homepage.
-    url='https://github.com/TRAGSATEC/ckanext-iepnb',
+    url='https://github.com/OpenDataGIS/ckanext-iepnb',
 
     # Author details
     author='''Daniel Sanjurjo''',

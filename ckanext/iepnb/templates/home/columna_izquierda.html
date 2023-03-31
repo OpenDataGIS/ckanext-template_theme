@@ -8,15 +8,15 @@
             <nav role="navigation" class="navbar_menu2 w-nav-menu">
               <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}" class="menu_area_privada w-inline-block">
                 <img src="{{ h.url_for_static('img/icono_administrador.svg') }}" loading="lazy" alt="Administrador" class="image-4">
-                <p class="text_menu_area_privada">{{ _('admin') }}</p>
+                <p class="text_menu_area_privada">{{ _('Administrador') }}</p>
               </a>
               <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="menu_area_privada w-inline-block" title="{{ _('View profile') }}">
                 <img src="{{ h.url_for_static('img/icono_datos.svg') }}" loading="lazy" alt="Tus datos" class="image-4">
-                <p class="text_menu_area_privada">tus datos</p>
+                <p class="text_menu_area_privada">{{ _('Tus datos') }}</p>
               </a>
               <a href="{{ h.url_for('dashboard.index') }}" class="menu_area_privada w-inline-block" title="{{ notifications_tooltip }}">
                 <img src="{{ h.url_for_static('img/icono_panel_de_control.svg') }}" loading="lazy" alt="Panel de control" class="image-4">
-                <p class="text_menu_area_privada">panel de control</p>
+                <p class="text_menu_area_privada">{{ _('Panel de control') }}</p>
               </a>
               <a href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}" class="menu_area_privada w-inline-block">
                 <img src="{{ h.url_for_static('img/icono_perfil.svg') }}" loading="lazy" alt="Ajustes de perfil" class="image-4">
@@ -34,7 +34,7 @@
 {% endif %}
         <div class="estadisticas">
           <div class="titular_linea_verde">
-            <h1 class="catalogo_datos_con_linea">Estadísticas</h1>
+            <h1 class="catalogo_datos_con_linea">{{ _('Estadísticas') }}</h1>
           </div>
           <div class="contenedor_links">
             <a href="{{ h.url_for('dataset.search') }}" class="link_menu_lateral w-inline-block"><p class="paragraph"><span class="text-span-2">{{ h.SI_number_span(stats.dataset_count) }}</span> {{ _('Dataset') if stats.dataset_count == 1 else _('Datasets') }}</p></a>

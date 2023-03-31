@@ -42,7 +42,7 @@ To install ckanext-iepnb:
     git clone https://github.com/OpenDataGIS/ckanext-iepnb.git
     cd ckanext-iepnb
     pip install -e .
-	pip install -r requirements.txt (actually not mandatory, but is a good habit)
+	pip install -r requirements.txt
     ```
 
 3. Add `iepnb` to the `ckan.plugins` setting in your CKAN
