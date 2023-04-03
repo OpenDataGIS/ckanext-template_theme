@@ -4,8 +4,10 @@ import ckanext.iepnb.config as iepnb_config
 import ckanext.iepnb.dge_helpers as helpers
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.common import json, config
+from ckan.common import json, config, c
+from ckan.logic.action.get import organization_show
 from ckan.lib.plugins import DefaultTranslation
+from ckan.lib import helpers as ckan_helpers
 import logging
 from urllib.request import urlopen
 import ssl
@@ -132,6 +134,20 @@ def iepnb_to_url_segment(cadena):
     _lcadena = _lcadena.replace(" ","-")
     return _lcadena
 
+@helper
+def iepnb_organization_name(item):
+    respuesta=item['display_name']
+    try:
+        org_dic = ckan_helpers.get_organization(item['display_name'])
+        if org_dic is not None:
+            respuesta=org_dic['name']
+        else:
+            logger.warning('No se ha podido encontrar el nombre de la organización con id %'.format(item['display_name']))
+    except Exception as e:
+        logger.error("Excepción al intentar encontrar el nombre de la organización: %".format(e))
+    return respuesta
+    
+    
 def _get_dge_helpers():
     return {
         'dge_add_additional_facet_fields': helpers.dge_add_additional_facet_fields,
