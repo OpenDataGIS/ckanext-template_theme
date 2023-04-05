@@ -2,6 +2,9 @@ from abc import ABC
 import ckan.plugins as plugins
 from ckan.common import request, config
 import ckanext.iepnb.config as iepnb_config
+import logging
+
+logger = logging.getLogger(__name__)
 
 class IepnbFaceted():
     plugins.implements(plugins.IFacets)
@@ -20,14 +23,34 @@ class IepnbFaceted():
         
         #facetas=config.get('iepnb.facets', '').split()
         lang_code = request.environ['CKAN_LANG']
-        facets_dict.clear()
+        
+        #ifacets_dict.clear()
+        _facets_dict = {}
         for facet in self.facet_list:
-            facets_dict[facet] = plugins.toolkit._(iepnb_config.facets_dict[facet])
+            try:
+                scheming_item=iepnb_config.get_facets_dict()[facet]
+            except KeyError:
+                try:
+                    _facets_dict[facet] = facets_dict[facet]
+                except KeyError:
+                    logger.warning("No existe el valor '{0}' para facetar".format(facet))
+            else:
+                try:           
+                    _facets_dict[facet] = scheming_item[lang_code]
+                except KeyError:
+                    try:
+                        _facets_dict[facet] = plugins.toolkit._(scheming_item[iepnb_config.default_locale])
+                    except KeyError:
+                        try:
+                            _facets_dict[facet] = plugins.toolkit._(list(scheming_item.values())[0])
+                        except IndexError:
+                            logger.warning("Ha sido imposible encontrar una etiqueta válida para el campo '{0}' al facetar".format(facet))
+                
         
         #tag_key = 'tags_' + lang_code
         #facets_dict[tag_key] = plugins.toolkit._('Tag')
         # FIXME: PARA FACETA COMUN DE TAGS
-        return self._facets(facets_dict)
+        return self._facets(_facets_dict)
 
     def group_facets(self, facets_dict, group_type, package_type):
         

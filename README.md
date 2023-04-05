@@ -53,26 +53,21 @@ To install ckanext-iepnb:
 
 	`ckan -c [route to your .ini ckan config file] search-index clear`
    
-5. Modify the schema file on Solr (schema or managed schema) to add this fields (if 
-   they dont exist yet):
-   
-	- theme_es
-	- tag_uri
-	- conforms_to
-	- lineage_source
-	- lineage_process_step
-	- reference
-	- theme
-	- resource_relation
+5. Modify the schema file on Solr (schema or managed schema) to add the multivalued fields added in the scheming extension used for faceting:
+
 	
-	All of them with these atributes:
+```xml
+	<! IEPNB extra fields - >
+    <field name="tag_uri" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="conforms_to" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="lineage_source" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="lineage_process_step" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="reference" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="theme" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
+    <field name="resource_relation" type="string" uninvertible="false" docValues="true" indexed="true" stored="true" multiValued="true"/>
 	
-	- type="string" 			to avoid split the text in tokens, each "faceted" individually
-	- uninvertible="false" 		as recomended by the documentation
-	- docValues="true" 			to ease faceting
-	- multiValued="true" 		to let solr use diferent values in the same field for faceting
-	- indexed="true" 			to let ckan recover resources under this facet
-	
+```
+   	
 	Be sure to restart Solr after modify the schema
 		
 6. Add iepnb specific configuration to the CKAN config file
@@ -108,9 +103,8 @@ At CKAN config .ini file (in `/etc/ckan/default` dir), into the [app:main] secti
 	#relative path to download breadcrumbs definition. Will take precedence over iepnb.headcrumbs if defined
 	iepnb.path_breadcrumbs = No_Default_Value
 	
-	#list of facets to show in search page, and its order
-	# available facets are: theme_es dcat_theme dcat_type owner_org res_format publisher_identifier publisher_type frequency tag_string tag_uri conforms_to
-	iepnb.facet_list = theme_es dcat_theme dcat_type owner_org res_format publisher_identifier publisher_type frequency tag_string tag_uri conforms_to
+	#list of facets to show in search page, and its order. This options are just an example, you can select your own
+	iepnb.facet_list = theme theme_es dcat_type owner_org res_format publisher_name publisher_type frequency tags tag_uri conforms_to
 ```	
 
 ## Developer installation

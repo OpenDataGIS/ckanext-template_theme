@@ -10,7 +10,7 @@
         {% else %}
           {% set label_function = None %}
         {% endif %}
-        {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, scheming_choices=h.scheming_field_by_name(h.scheming_get_dataset_schema('dataset').dataset_fields,facet).choices, label_function = label_function) }}
+        {{ h.snippet('snippets/iepnb_facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, scheming_choices=h.scheming_field_by_name(h.scheming_get_dataset_schema('dataset').dataset_fields,facet).choices, label_function = label_function) }}
       {% endfor %}
     </div>
     <a class="close no-text hide-filters"><i class="fa fa-times-circle"></i><span class="text">close</span></a>

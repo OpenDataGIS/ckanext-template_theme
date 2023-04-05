@@ -7,9 +7,9 @@
 #     preload:
 #       - base/main
 
-iepnb-css:
-  filter: cssrewrite
-  output: ckanext-iepnb/%(version)s-iepnb.css
-  contents:
-    - css/iepnb.css
+#iepnb-css:
+#  filter: cssrewrite
+#  output: ckanext-iepnb/%(version)s-iepnb.css
+#  contents:
+#    - css/iepnb.css
 
