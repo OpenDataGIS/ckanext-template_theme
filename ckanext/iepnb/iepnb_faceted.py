@@ -2,6 +2,7 @@ from abc import ABC
 import ckan.plugins as plugins
 from ckan.common import request, config
 import ckanext.iepnb.config as iepnb_config
+from ckanext.iepnb.utils import get_facets_dict
 import logging
 
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ class IepnbFaceted():
         _facets_dict = {}
         for facet in self.facet_list:
             try:
-                scheming_item=iepnb_config.get_facets_dict()[facet]
+                scheming_item=get_facets_dict()[facet]
             except KeyError:
                 try:
                     _facets_dict[facet] = facets_dict[facet]

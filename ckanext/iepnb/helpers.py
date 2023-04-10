@@ -2,6 +2,7 @@ from ckan.common import json, config
 from ckan.lib.plugins import DefaultTranslation
 from ckan.lib import helpers as ckan_helpers
 import ckanext.iepnb.config as iepnb_config
+from ckanext.iepnb.utils import get_facets_dict
 from urllib.request import urlopen
 import ckan.logic as logic
 import logging
@@ -59,6 +60,17 @@ def iepnb_breadcrumbs(lang = ''):
         breadcrumbs_text = breadcrumbs_text_bytes.decode("utf-8")
         
         return breadcrumbs_text
+
+@helper        
+def iepnb_get_facet_class(name,item):
+    respuesta=""
+    if name=="theme":
+        respuesta=item.split('/')[-1].lower()
+    elif name=="theme_es":
+        respuesta=respuesta=item.split('/')[-1].lower()
+        
+    return respuesta
+
 
 @helper        
 def iepnb_home():
@@ -134,13 +146,6 @@ def iepnb_organization_name(item):
     return respuesta
 
 @helper
-def iepnb_get_facet_label(facet):
-    if not iepnb_config.facets_dict:
-        schema=logic.get_action('scheming_dataset_schema_show')({}, {'type': 'dataset'})
-        for item in schema['dataset_fields']:
-            iepnb_config.facets_dict[item['field_name']]=item['label']['es']
-        
-    respuesta=iepnb_config.facets_dict[facet]
-    
-    return respuesta
+def iepnb_get_facet_label(facet):    
+    return get_facets_dict[facet]
     
