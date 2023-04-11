@@ -1,4 +1,5 @@
 from ckan.common import (_, request)
+import json
 import ckan.plugins as plugins
 import ckanext.iepnb.config as iepnb_config
 import logging
@@ -33,9 +34,12 @@ class IepnbPackageController():
         pass
     
     def before_search(self, search_params):
-        new_fq = self._facet_search_operator(
-            (search_params.get('fq', '')), (search_params.get('facet.field', '')))
-        search_params.update({'fq': new_fq})
+        log.debug('before_search-search_params {0}'.format(search_params))
+        facet_field= search_params.get('facet.field', '')
+        if facet_field is not None and len(facet_field) > 0:
+            new_fq = self._facet_search_operator(
+                (search_params.get('fq', '')), facet_field)
+            search_params.update({'fq': new_fq})
 
         return search_params
     
@@ -76,6 +80,9 @@ class IepnbPackageController():
         self.default_facet_operator=default_facet_operator
         
     def _facet_search_operator(self, fq, facet_field):
+        """Si en el request se ha incluido información para el operador de facets y está definido como OR, se devuelve una versión de fq
+        donde se incluyen todos los filtros unidos por el operador OR
+        """
         new_fq = fq
         facets_group=""
         no_facets_group=""
@@ -83,6 +90,7 @@ class IepnbPackageController():
         try:
             facet_operator = self.default_facet_operator
             try:
+                #busco si hay definido un operador de facetas en el request, y lo guardo en facet_operator
                 if request is not None and request.params and request.params.items():
                     log.info('request.params %r' % request.params)
                     if (FACET_OPERATOR_PARAM_NAME, 'AND') in request.params.items():
@@ -96,6 +104,7 @@ class IepnbPackageController():
                 
             log.debug(u'facet_operator {0}'.format(facet_operator))
 
+            #Por defecto la búsqueda por facetas es por intersección, pero si he pedido el operador OR, la hago aditiva
             if (facet_operator == 'OR'):
                 fq_split = fq.split('" ')
                 log.debug('fq_split {0}'.format(fq_split))
