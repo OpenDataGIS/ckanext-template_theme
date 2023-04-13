@@ -13,6 +13,7 @@ class IepnbFaceted():
     
     def facet_load_config(self,facet_list):
         self.facet_list= facet_list
+        logger.debug("Configured facet_list= {0}".format(self.facet_list))
     
     #Remove group facet
     def _facets(self, facets_dict):
@@ -51,6 +52,7 @@ class IepnbFaceted():
         #tag_key = 'tags_' + lang_code
         #facets_dict[tag_key] = plugins.toolkit._('Tag')
         # FIXME: PARA FACETA COMUN DE TAGS
+        logger.debug("dataset_facets._facets_dict: {0}".format(_facets_dict))
         return self._facets(_facets_dict)
 
     def group_facets(self, facets_dict, group_type, package_type):

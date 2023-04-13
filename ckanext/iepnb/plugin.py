@@ -3,6 +3,7 @@ from ckanext.iepnb.iepnb_package_controller import IepnbPackageController
 import ckanext.iepnb.config as iepnb_config
 import ckanext.iepnb.helpers as iepnb_helpers
 #import ckanext.iepnb.dge_helpers as helpers
+import ckan.model as model
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.common import config
@@ -108,9 +109,4 @@ class IepnbPlugin(plugins.SingletonPlugin,IepnbFaceted,IepnbPackageController, D
         #respuesta.update(dict(all_helpers))
         respuesta=dict(iepnb_helpers.all_helpers)
         return respuesta
-    
-        
-    
-    
-    
     
