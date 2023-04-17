@@ -18,6 +18,12 @@
                 <img src="{{ h.url_for_static('img/icono_panel_de_control.svg') }}" loading="lazy" alt="Panel de control" class="image-4">
                 <p class="text_menu_area_privada">{{ _('Panel de control') }}</p>
               </a>
+              
+              <a href="{{ h.url_for('/harvest') }}" class="menu_area_privada w-inline-block" title="{{ _('harvest') }}">
+                <img src="{{ h.url_for_static('img/icono_harvest.svg') }}" loading="lazy" alt="Harvest" class="image-4">
+                <p class="text_menu_area_privada">{{ _('Harvest') }}</p>
+              </a>
+              
               <a href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}" class="menu_area_privada w-inline-block">
                 <img src="{{ h.url_for_static('img/icono_perfil.svg') }}" loading="lazy" alt="Ajustes de perfil" class="image-4">
                 <p class="text_menu_area_privada">{{ _('Profile settings') }}</p>

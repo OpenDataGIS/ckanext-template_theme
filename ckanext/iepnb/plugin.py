@@ -12,6 +12,7 @@ from ckan.lib.plugins import DefaultTranslation
 import logging
 from urllib.request import urlopen
 import ssl
+#from ckanext.iepnb.iepnb_action import all_actions 
 
 logger = logging.getLogger(__name__)
 server_menu=""
@@ -70,6 +71,7 @@ class IepnbPlugin(plugins.SingletonPlugin,IepnbFaceted,IepnbPackageController, D
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController)
     plugins.implements(plugins.ITranslation)
+#    plugins.implements(plugins.IActions)
 
 
     # IConfigurer
@@ -110,3 +112,5 @@ class IepnbPlugin(plugins.SingletonPlugin,IepnbFaceted,IepnbPackageController, D
         respuesta=dict(iepnb_helpers.all_helpers)
         return respuesta
     
+ #   def get_actions(self):
+ #       return all_actions

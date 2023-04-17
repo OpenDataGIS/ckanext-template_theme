@@ -179,6 +179,8 @@ def iepnb_get_facet_items_dict(
     scheming_choices -- scheming choices to use to get label from value.
 
     '''
+    
+    logger.debug("Returning facets for: {0}".format(facet))
     order="default"
     if search_facets is None:
         search_facets = getattr(c, u'search_facets', None)
@@ -203,7 +205,7 @@ def iepnb_get_facet_items_dict(
         elif not exclude_active:
             facets.append(dict(active=True, **facet_item))
             
-        logger.debug("params: {0}:{1}".format(facet,request.params.getlist("_%s_sort" % facet)))
+        #logger.debug("params: {0}:{1}".format(facet,request.params.getlist("_%s_sort" % facet)))
         order_lst=request.params.getlist("_%s_sort" % facet)
         if len(order_lst):
             order=order_lst[0]

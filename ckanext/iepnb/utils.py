@@ -17,5 +17,5 @@ def get_facets_dict():
             _facets_dict[item['field_name']]=item['label']
         for item in schema['resource_fields']:
             _facets_dict[item['field_name']]=item['label']
-        logger.debug("Diccionario etiquetas: {0}".format(_facets_dict))
+        #logger.debug("Diccionario etiquetas: {0}".format(_facets_dict))
     return _facets_dict

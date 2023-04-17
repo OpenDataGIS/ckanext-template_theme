@@ -17,8 +17,8 @@ class IepnbFaceted():
     
     #Remove group facet
     def _facets(self, facets_dict):
-        if 'groups' in facets_dict:
-            del facets_dict['groups']
+        #if 'groups' in facets_dict:
+        #    del facets_dict['groups']
         return facets_dict
 
     def dataset_facets(self, facets_dict, package_type):
