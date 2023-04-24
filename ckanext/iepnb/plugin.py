@@ -83,7 +83,7 @@ class IepnbPlugin(plugins.SingletonPlugin,IepnbFaceted,IepnbPackageController, D
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'iepnb')
-        toolkit.add_resource('assets', 'ckanext-iepnb')
+        toolkit.add_resource('assets', 'ckanext-template_theme')
         toolkit.add_template_directory(config_, 'templates')
               
         iepnb_config.server_menu = config.get('iepnb.server', iepnb_config.server_menu)

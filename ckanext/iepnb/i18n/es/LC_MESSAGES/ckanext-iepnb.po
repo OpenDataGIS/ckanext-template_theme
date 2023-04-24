@@ -1,12 +1,12 @@
-# Spanish translations for ckanext-iepnb.
+# Spanish translations for ckanext-template_theme.
 # Copyright (C) 2023 ORGANIZATION
-# This file is distributed under the same license as the ckanext-iepnb
+# This file is distributed under the same license as the ckanext-template_theme
 # project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ckanext-iepnb 0.0.1\n"
+"Project-Id-Version: ckanext-template_theme 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-03-29 09:31+0200\n"
 "PO-Revision-Date: 2023-03-29 09:45+0200\n"

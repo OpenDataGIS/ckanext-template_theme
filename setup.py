@@ -11,19 +11,19 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-iepnb''',
+    name='''ckanext-template_theme''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''Plantillas iepnb''',
+    description='''CKAN Open Data portals theme template''',
     long_description=long_description,
     long_description_content_type="text/markdown",
 
     # The project's main homepage.
-    url='https://github.com/OpenDataGIS/ckanext-iepnb',
+    url='https://github.com/OpenDataGIS/ckanext-template_theme',
 
     # Author details
     author='''Daniel Sanjurjo''',
@@ -50,7 +50,7 @@ setup(
 
 
     # What does your project relate to?
-    keywords='''CKAN iepnb''',
+    keywords='''CKAN template theme''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
